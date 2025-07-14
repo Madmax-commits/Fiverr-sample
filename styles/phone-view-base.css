@@ -1,0 +1,112 @@
+/* Base Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+header, footer, main {
+  padding: 1rem;
+}
+
+h1, h2 {
+  margin-bottom: 0.5rem;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #005f73;
+  font-weight: bold;
+}
+
+/* Layout Sections */
+.main-content, .aside-content {
+  margin-bottom: 2rem;
+}
+
+.about-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.about-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.location {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* Nigeria Info */
+.nigeria-info-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.flag-column, .description-column {
+  text-align: center;
+}
+
+/* Web Dev Resources */
+.resource-links {
+  list-style: none;
+  padding: 0;
+}
+
+.resource-links li {
+  margin: 0.5rem 0;
+}
+
+.resource-links a {
+  color: #0a9396;
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #fcf8f8;
+  border-top: 1px solid #ddd;
+  padding-top: 1rem;
+}
+
+/* Responsive Media Queries */
+@media (min-width: 600px) {
+  .about-flex {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nigeria-info-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .flag-column, .description-column {
+    width: 48%;
+  }
+
+  nav {
+    justify-content: space-around;
+  }
+}
+
