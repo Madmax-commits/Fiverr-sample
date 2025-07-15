@@ -1,10 +1,8 @@
-// Insert current year
+// === 📅 Footer Dynamic Dates ===
 document.getElementById("currentyear").textContent = new Date().getFullYear();
-
-// Insert last modified
 document.getElementById("lastModified").textContent = "Last Modified: " + document.lastModified;
 
-// Hamburger menu toggle
+// === 🍔 Navigation Toggle ===
 const toggleBtn = document.querySelector('.menu-toggle');
 const navMenu = document.querySelector('.nav-menu');
 
@@ -13,7 +11,7 @@ toggleBtn.addEventListener('click', () => {
   navMenu.classList.toggle('active');
 });
 
-// Auto-close mobile nav on link click
+// === 📱 Auto-close Mobile Menu on Link Click ===
 document.querySelectorAll('.nav-menu a').forEach(link => {
   link.addEventListener('click', () => {
     navMenu.classList.remove('active');
@@ -21,18 +19,29 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
   });
 });
 
-// Form validation and success message
-document.getElementById("booking-form").addEventListener("submit", function(event) {
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const message = document.getElementById("message").value.trim();
+// === 📨 Form Validation and Success Handling ===
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("booking-form");
   const successBox = document.getElementById("form-success");
 
-  if (!name || !email || !message) {
-    alert("Please fill in all required fields.");
-    event.preventDefault();
-  } else {
-    successBox.classList.add("visible");
-  }
+  form.addEventListener("submit", function(event) {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    // Clear any previous success message
+    successBox.classList.remove("visible");
+    successBox.textContent = "";
+
+    // Validation
+    if (!name || !email || !message) {
+      alert("⚠️ Please complete all required fields before submitting your request.");
+      event.preventDefault(); // Prevent sending if invalid
+    } else {
+      // Show confirmation message if passed validation
+      successBox.textContent = "✅ Your request has been prepared. Please check your email to confirm and send.";
+      successBox.classList.add("visible");
+    }
+  });
 });
 
