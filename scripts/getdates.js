@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault(); // Prevent sending if invalid
     } else {
       // Show confirmation message if passed validation
-      successBox.textContent = "✅ Your request has been prepared. Please check your email to confirm and send.";
+      successBox.textContent = "✅ request Sent!";
       successBox.classList.add("visible");
     }
   });
