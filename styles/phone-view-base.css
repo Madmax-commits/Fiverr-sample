@@ -26,14 +26,7 @@ header h1 {
   font-weight: bold;
 }
 
-.main-content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 30px;
-  margin-top: 30px;
-}
-
-/* Navigation links */
+/* Navigation */
 nav {
   margin-top: 15px;
   display: flex;
@@ -51,6 +44,77 @@ nav a {
   font-size: 14px;
 }
 
+.nav-menu.active {
+  display: flex;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1001;
+}
+
+.menu-toggle .bar {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 2px;
+  transition: 0.4s;
+}
+
+.menu-toggle.open .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.open .bar:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.open .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Mobile nav */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #111;
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .nav-menu a {
+    font-size: 16px;
+    padding: 8px 0;
+  }
+}
+
+/* Main content */
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-top: 30px;
+}
+@media (min-width: 768px) {
+  .main-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 /* Section headers */
 .card-header h2 {
   font-size: 22px;
@@ -66,9 +130,14 @@ nav a {
   display: flex;
   flex-direction: column;
   align-items: center;
-}     
-
-
+}
+@media (min-width: 768px) {
+  .about-flex {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+  }
+}
 .intro-text {
   font-size: 16px;
   text-align: center;
@@ -82,7 +151,7 @@ nav a {
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-/* Location */
+/* Location box */
 .location {
   background-color: #eeeeee;
   padding: 12px;
@@ -91,8 +160,7 @@ nav a {
   text-align: center;
 }
 
-
-/* Nigeria info row */
+/* Nigeria info */
 .nigeria-info-row {
   background-color: transparent;
   padding: 20px;
@@ -106,11 +174,15 @@ nav a {
 @media (min-width: 768px) {
   .nigeria-info-row {
     flex-direction: row;
-    align-items: center;
     justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .description-column {
+    text-align: left;
+    max-width: 60%;
   }
 }
-
 
 .flag-column, .description-column {
   text-align: center;
@@ -136,13 +208,11 @@ nav a {
 }
 .resource-links {
   list-style: none;
-  padding: 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-/* Each link as a block button */
 .resource-links a {
   background-color: rgb(84, 84, 95);
   color: white;
@@ -154,9 +224,71 @@ nav a {
   font-size: 14px;
 }
 
-/* Switch to grid layout on larger screens */
+/* Contact Section */
+.contact-section {
+  background-color: #fff;
+  padding: 20px;
+  margin-top: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.contact-section h2 {
+  font-size: 22px;
+  font-weight: 600;
+  border-bottom: 2px solid #111;
+  padding-bottom: 6px;
+  margin-bottom: 15px;
+  color: #111;
+}
+.contact-section p {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 20px;
+}
+.contact-section label {
+  font-size: 14px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+}
+.contact-section input,
+.contact-section textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+.contact-section input[type="submit"],
+.contact-section input[type="reset"] {
+  background-color: #0078D7;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.contact-section input[type="submit"]:hover,
+.contact-section input[type="reset"]:hover {
+  background-color: #005fa3;
+}
 
-
+/* Form success message */
+#form-success {
+  background-color: #e0ffe0;
+  color: #0a7400;
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 15px;
+  font-weight: bold;
+  display: none;
+}
+#form-success.visible {
+  display: block;
+}
 
 /* Footer styles */
 footer {
@@ -166,124 +298,5 @@ footer {
   color: #fff;
   text-align: center;
   font-size: 14px;
-}
-
-/* Responsive tweaks */
-@media (min-width: 768px) {
-  .main-content {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 768px) {
-  .about-flex {
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 20px;
-  }
-}
-
-  .nigeria-info-row {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-
-  .description-column {
-    text-align: left;
-    max-width: 60%;
-  }
-
-  nav {
-    justify-content: center;
-  }
-
-/* Hide menu by default on small screens */
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 28px;
-  color: #fff;
-  margin-top: 10px;
-  cursor: pointer;
-  align-self: flex-start;
-}
-
-/* Responsive nav setup */
-.nav-menu {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-/* ===== Mobile view ===== */
-@media (max-width: 768px) {
-  .nav-menu {
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    background-color: #111;
-    padding: 15px;
-    border-radius: 8px;
-  }
-
-  .nav-menu a {
-    color: #fff;
-    font-size: 16px;
-    padding: 8px 0;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-menu.active {
-    display: flex;
-  }
-}
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 24px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 5px;
-  z-index: 1001;
-}
-
-.menu-toggle .bar {
-  height: 3px;
-  width: 100%;
-  background-color: white;
-  border-radius: 2px;
-  transition: 0.4s;
-}
-
-/* ===== Hamburger → X ===== */
-.menu-toggle.open .bar:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.menu-toggle.open .bar:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle.open .bar:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-  }
 }
 
