@@ -197,7 +197,7 @@ footer {
   nav {
     justify-content: center;
   }
-}
+
 /* Hide menu by default on small screens */
 .menu-toggle {
   display: none;
