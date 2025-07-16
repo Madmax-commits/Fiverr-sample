@@ -285,10 +285,13 @@ nav a {
   margin-top: 15px;
   font-weight: bold;
   display: none;
+  transition: opacity 0.4s ease;
 }
 #form-success.visible {
   display: block;
+  opacity: 1;
 }
+
 
 /* Footer styles */
 footer {
